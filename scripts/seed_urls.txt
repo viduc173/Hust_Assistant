@@ -1,0 +1,41 @@
+# Danh sach URL nguon de crawl noi quy / quy che - Dai hoc Bach khoa Ha Noi (HUST).
+# Duoc tim tu web search ngay 2026-09-22. Da uu tien cac van ban MOI NHAT (2025)
+# vi truong da cap nhat Quy che dao tao va tach rieng phan ky luat sang Quy che
+# Cong tac sinh vien. VAN NEN tu kiem tra lai truoc khi dung cho muc dich chinh thuc,
+# vi van ban phap quy co the tiep tuc duoc cap nhat.
+
+# --- Quy che dao tao (2025, hien hanh - Quyet dinh 5445) ---
+https://ctt.hust.edu.vn/Upload/Nguy%E1%BB%85n%20Qu%E1%BB%91c%20%C4%90%E1%BA%A1t/files/DTDH_QDQC/Hoctap/QCDT_2025_5445_QD-DHBK.pdf
+
+# Trang hien thi bai viet ve Quy che dao tao 2025 (co the co them lien ket lien quan)
+https://ctt.hust.edu.vn/DisplayWeb/DisplayBaiViet?baiviet=44533
+
+# Bang so sanh diem cap nhat giua Quy che dao tao 2025 va ban cu - huu ich de
+# giai thich thay doi cho sinh vien
+https://ctt.hust.edu.vn/Upload/Nguy%E1%BB%85n%20Qu%E1%BB%91c%20%C4%90%E1%BA%A1t/files/DTDH_QDQC/Hoctap/Diem%20moi%20cua%20QCDT%202025.pdf
+
+# --- Quy che dao tao (2023, tham khao / co the con duoc dan chieu) ---
+https://ctt.hust.edu.vn/Upload/Nguyen%20Quoc%20Dat/files/DTDH_QDQC/Hoctap/QCDT-2023-upload.pdf
+
+# --- Quy che cong tac sinh vien (2025, hien hanh) ---
+# Trang cua Truong Hoa va Khoa hoc Su song dang lai - kiem tra co ban PDF chinh
+# thuc tu Ban Cong tac sinh vien hoac Phong Dao tao hay khong.
+https://scls.hust.edu.vn/vi/download/Bieu-mau/quy-che-ctsv-2025.html
+
+# --- Danh gia ket qua ren luyen sinh vien (lien quan khen thuong / ky luat / KTX) ---
+https://ctt.hust.edu.vn/DisplayWeb/DisplayBaiViet?baiviet=35502
+
+# --- Trang gioi thieu Ban Cong tac sinh vien (dau moi lien he, chuc nang) ---
+https://hust.edu.vn/vi/co-cau-to-chuc-bai-viet/ban-cong-tac-sinh-vien.html
+
+# --- Luu y ve quy dinh phong thi (vi du tu SoICT - co the co ban tuong tu o cac vien khac) ---
+https://soict.hust.edu.vn/luu-y-ve-quy-dinh-phong-thi.html
+
+# TODO cua ban:
+# 1. Mo tung URL tren, xac nhan noi dung con dung/con hieu luc (nam hoc hien tai).
+# 2. Tim va bo sung: Noi quy Ky tuc xa (thuong do Trung tam Ky tuc xa / Phong CTSV
+#    quan ly, chua tim thay link PDF cong khai trong lan tim kiem nay).
+# 3. Tim va bo sung: Quy dinh hoc phi, hoc bong (thuong o phong Ke hoach - Tai chinh
+#    hoac phong Cong tac sinh vien).
+# 4. Neu vien/khoa cua ban co quy dinh rieng (vd SoICT, SCLS...), co the them URL
+#    trang khoa/vien tuong ung.

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Trợ lý Nội quy HUST</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <button id="new-thread-btn" class="new-thread-btn" type="button">
+          <span class="plus">+</span> Cuộc hội thoại mới
+        </button>
+      </div>
+      <nav id="thread-list" class="thread-list"></nav>
+    </aside>
+
+    <div class="app">
+      <header class="app-header">
+        <div class="header-left">
+          <button id="sidebar-toggle" class="icon-btn sidebar-toggle-btn" type="button" title="Danh sách hội thoại" aria-label="Danh sách hội thoại">☰</button>
+          <div class="logo">🎓</div>
+          <div class="header-text">
+            <h1>Trợ lý Nội quy HUST</h1>
+            <p>Hỏi đáp quy chế đào tạo &amp; nội quy sinh viên Bách khoa Hà Nội</p>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button id="theme-toggle" class="icon-btn" type="button" title="Đổi giao diện sáng/tối" aria-label="Đổi giao diện sáng/tối">
+            <span class="icon-sun">☀️</span>
+            <span class="icon-moon">🌙</span>
+          </button>
+        </div>
+      </header>
+
+      <main id="chat-window" class="chat-window"></main>
+
+      <form id="chat-form" class="chat-form">
+        <textarea
+          id="chat-input"
+          rows="1"
+          placeholder="Nhập câu hỏi... (Enter để gửi, Shift+Enter để xuống dòng)"
+          autocomplete="off"
+        ></textarea>
+        <button id="send-btn" type="submit" aria-label="Gửi">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+        </button>
+      </form>
+      <p class="disclaimer">Câu trả lời được tạo tự động dựa trên dữ liệu đã nạp, có thể thiếu sót — hãy đối chiếu văn bản gốc trước khi sử dụng chính thức.</p>
+    </div>
+  </div>
+
+  <template id="welcome-template">
+    <div class="message assistant">
+      <div class="avatar assistant-avatar">🎓</div>
+      <div class="bubble-col">
+        <div class="bubble">
+          Xin chào! Mình là trợ lý hỗ trợ tra cứu nội quy, quy chế của trường. Bạn muốn hỏi điều gì?
+        </div>
+      </div>
+    </div>
+    <div id="suggestions" class="suggestions">
+      <button type="button" class="chip">Sinh viên nghỉ học quá bao nhiêu % thì bị cấm thi?</button>
+      <button type="button" class="chip">Điều kiện để được xét học bổng khuyến khích học tập?</button>
+      <button type="button" class="chip">Quy định về đăng ký học lại, học cải thiện điểm?</button>
+      <button type="button" class="chip">Cảnh báo học tập và buộc thôi học được tính như thế nào?</button>
+    </div>
+  </template>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.5/purify.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

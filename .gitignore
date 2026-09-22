@@ -1,0 +1,10 @@
+.env
+__pycache__/
+*.pyc
+.venv/
+venv/
+data/chroma/
+data/raw/*.html
+node_modules/
+uvicorn_out.log
+uvicorn_err.log
