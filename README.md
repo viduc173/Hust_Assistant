@@ -92,6 +92,23 @@ tin dù dữ liệu đã có trong index (context_recall thấp) — khác với
 dữ liệu thực sự chưa được crawl. Nên bổ sung thêm câu hỏi vào `EVAL_SET` khi
 crawl thêm nguồn mới hoặc đổi tham số chunking/embedding, để so sánh trước/sau.
 
+**Kết quả baseline** (chạy ngày 2026-09-22, 8/8 câu hỏi chấm được, model sinh
+câu trả lời `claude-opus-5`, embedding `text-embedding-3-small`, `RAG_TOP_K=5`):
+
+| Metric | Điểm trung bình | Ghi chú |
+|---|---|---|
+| context_precision | 0.68 | 1/8 câu context bị loãng (nhiều chunk không liên quan) |
+| context_recall | 0.75 | 1/8 câu retrieval bỏ sót thông tin dù đã có trong index |
+| faithfulness | 0.96 | Bám sát context tốt, hầu như không bịa đặt |
+| answer_relevancy | 0.97 | Trả lời đúng trọng tâm câu hỏi |
+| answer_correctness | 1.00 | Kể cả câu hỏi ngoài phạm vi (học phí), bot từ chối trung thực thay vì đoán bừa |
+
+Điểm cần lưu ý: `context_recall` 0.75 cho thấy retrieval đôi khi bỏ sót chunk
+đúng dù dữ liệu đã có trong index (vd câu hỏi về giới hạn tín chỉ khi bị cảnh
+báo học tập) — không phải do thiếu dữ liệu nguồn. Có thể cải thiện bằng cách
+tăng `RAG_TOP_K` hoặc tinh chỉnh chunking, nhưng cần eval set lớn hơn 8 câu để
+kết luận chắc chắn trước khi đổi tham số.
+
 ## Cấu hình chi phí / chất lượng
 
 Trong `.env`:
