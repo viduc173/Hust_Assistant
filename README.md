@@ -9,7 +9,7 @@ ngữ cảnh để trả lời — hạn chế bịa đặt và có trích dẫn
 
 ```
 scripts/crawl.py           -> tải nội dung nội quy từ website trường (data/raw/*.txt)
-scripts/chunk_and_index.py -> chia nhỏ văn bản, tạo embedding (Voyage AI), lưu vào ChromaDB (data/chroma/)
+scripts/chunk_and_index.py -> chia nhỏ văn bản, tạo embedding (OpenAI), lưu vào ChromaDB (data/chroma/)
 backend/app.py              -> FastAPI: nhận câu hỏi, truy hồi (RAG), gọi Claude API, trả lời + nguồn
 frontend/                   -> giao diện chat HTML/CSS/JS thuần, gọi backend qua /api/chat
 ```
@@ -31,10 +31,11 @@ frontend/                   -> giao diện chat HTML/CSS/JS thuần, gọi backe
    copy .env.example .env
    ```
 
-   - `ANTHROPIC_API_KEY`: lấy tại https://console.anthropic.com/
-   - `VOYAGE_API_KEY`: lấy tại https://dashboard.voyageai.com/ (Voyage AI là đối
-     tác embedding chính thức của Anthropic — Claude API không có embedding
-     model riêng)
+   - `ANTHROPIC_API_KEY`: lấy tại https://console.anthropic.com/ (dùng để gọi
+     Claude sinh câu trả lời)
+   - `OPENAI_API_KEY`: lấy tại https://platform.openai.com/api-keys (dùng để
+     tạo embedding qua `text-embedding-3-small` — Claude API không có
+     embedding model riêng nên cần dùng bên thứ ba)
 
 ## Bước 1 — Thu thập dữ liệu nội quy
 
@@ -67,7 +68,7 @@ python scripts/chunk_and_index.py
 ```
 
 Script sẽ chia văn bản thành các đoạn ~1200 ký tự (có overlap), tạo embedding
-qua Voyage AI, và lưu vào ChromaDB tại `data/chroma/`.
+qua OpenAI (`text-embedding-3-small`), và lưu vào ChromaDB tại `data/chroma/`.
 
 ## Bước 3 — Chạy backend
 
@@ -77,6 +78,19 @@ uvicorn backend.app:app --reload --port 8000
 
 Mở trình duyệt tại `http://localhost:8000` — FastAPI phục vụ luôn cả giao diện
 chat tĩnh trong `frontend/`.
+
+## Đánh giá chất lượng RAG
+
+```powershell
+python scripts/eval_rag.py
+```
+
+Chạy bộ câu hỏi mẫu (đáp án đối chiếu trực tiếp từ `data/raw/`) qua toàn bộ
+pipeline, dùng Claude làm giám khảo (LLM-as-judge) chấm 5 metric: chi tiết ở
+docstring đầu file. Hữu ích để phát hiện các trường hợp retrieval bỏ sót thông
+tin dù dữ liệu đã có trong index (context_recall thấp) — khác với trường hợp
+dữ liệu thực sự chưa được crawl. Nên bổ sung thêm câu hỏi vào `EVAL_SET` khi
+crawl thêm nguồn mới hoặc đổi tham số chunking/embedding, để so sánh trước/sau.
 
 ## Cấu hình chi phí / chất lượng
 
